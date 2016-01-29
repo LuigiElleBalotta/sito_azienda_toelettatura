@@ -1440,3 +1440,14 @@ textarea.form-control {
         width: 380px;
     }
 }
+
+/* custom */
+.carousel-inner a{
+    color: #000000;
+}
+.carousel-inner a:hover{
+    color: #000000;
+}
+.carousel-inner a:visited{
+    color: #000000;
+}

@@ -75,7 +75,7 @@ include_once($_SERVER['DOCUMENT_ROOT']."/config.php");
 					
 					<!-- logo -->
 					<h1 class="navbar-brand">
-						<a href="#body">Blue</a>
+						<a href="#body">Happy Dogs</a>
 					</h1>
 					<!-- /logo -->
                 </div>
@@ -84,11 +84,10 @@ include_once($_SERVER['DOCUMENT_ROOT']."/config.php");
                 <nav class="collapse navbar-collapse navbar-right" role="navigation">
                     <ul id="nav" class="nav navbar-nav">
                         <li><a href="#body">Home</a></li>
-                        <li><a href="#service">Service</a></li>
-                        <li><a href="#portfolio">portfolio</a></li>
-                        <li><a href="#testimonials">Testimonial</a></li>
-                        <li><a href="#price">price</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#service">Servizi</a></li>
+                        <li><a href="#portfolio">Foto</a></li>
+                        <li><a href="#testimonials">Testimonianze</a></li>
+                        <li><a href="#contact">Contattami</a></li>
                     </ul>
                 </nav>
 				<!-- /main nav -->
@@ -186,31 +185,46 @@ include_once($_SERVER['DOCUMENT_ROOT']."/config.php");
 			<section id="about" >
 				<div class="container">
 					<div class="row">
-						<div class="col-md-4 wow animated fadeInLeft">
-							<div class="recent-works">
-								<h3>Recent Works</h3>
-								<div id="works">
-									<div class="work-item">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br> <br> There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-									</div>
-									<div class="work-item">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br><br> There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-									</div>
-									<div class="work-item">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br><br> There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-7 col-md-offset-1 wow animated fadeInRight">
-							<div class="welcome-block">
-								<h3>Welcome To Our Site</h3>								
-						     	 <div class="message-body">
-									<img src="img/member-1.jpg" class="pull-left" alt="member">
-						       		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-						     	 </div>
-						       	<a href="#" class="btn btn-border btn-effect pull-right">Read More</a>
-						    </div>
+						<div id="myCarousel" class="carousel slide col-md-10 col-md-offset-1 wow animated fadeInRight" data-ride="carousel">
+						<!-- Indicators -->
+						<ol class="carousel-indicators">
+						  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+						  <li data-target="#myCarousel" data-slide-to="1"></li>
+						  <li data-target="#myCarousel" data-slide-to="2"></li>
+						  <li data-target="#myCarousel" data-slide-to="3"></li>
+						</ol>
+					
+						<!-- Wrapper for slides -->
+						<div class="carousel-inner" role="listbox">
+							<?php
+							for($i = 0; $i < 4; $i++)
+							{
+								if($i == 0)
+									echo "<div class='item active'>";
+								else
+									echo "<div class='item'>";
+								echo "<div class='welcome-block'>";
+								echo "<h3>News</h3>";
+								echo "<div class='message-body'>";
+								echo '<img src="https://graph.facebook.com/729783137104775/picture?access_token=466576463534668|bf7744806e9352368d3e9e965647d5ea&width=280&height=280" class="pull-left" alt="member">';
+								echo "<p>";
+								$messaggio = $arr[$i]["story"];
+								if(StringContains("http", $messaggio))
+								{
+									$linkstring = get_string_between($messaggio, "http", " ");
+									foreach($linkstring as $link)
+									{
+										$messaggio = str_replace("http$link", "<a href='http$link'>http$link</a>", $messaggio);
+									}
+								}
+								echo $messaggio;
+								echo "</p>";
+								echo "</div>";
+								echo '<a href="https://facebook.com/'.$arr[$i]["id"].'" class="btn btn-border btn-effect pull-right">Guarda su facebook</a>';
+								echo "</div></div>";
+								$messaggio = "";
+							}
+							?>
 						</div>
 					</div>
 				</div>
@@ -280,83 +294,24 @@ include_once($_SERVER['DOCUMENT_ROOT']."/config.php");
 					<div class="row">
 					
 						<div class="sec-title text-center wow animated fadeInDown">
-							<h2>FEATURED PROJECTS</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+							<h2>Foto</h2>
+							<p>Le ultime foto riguardanti il negozio</p>
 						</div>
-						
-
 						<ul class="project-wrapper wow animated fadeInUp">
-							<li class="portfolio-item">
-								<img src="img/portfolio/item.jpg" class="img-responsive" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat">
-								<figcaption class="mask">
-									<h3>Wall street</h3>
-									<p>Lorem Ipsum is simply dummy text of the printing and typesetting ndustry. </p>
-								</figcaption>
-								<ul class="external">
-									<li><a class="fancybox" title="Araund The world" data-fancybox-group="works" href="img/portfolio/item.jpg"><i class="fa fa-search"></i></a></li>
-									<li><a href=""><i class="fa fa-link"></i></a></li>
-								</ul>
-							</li>
-							
-							<li class="portfolio-item">
-								<img src="img/portfolio/item2.jpg" class="img-responsive" alt="Lorem Ipsum is simply dummy text of the printing and typesetting ndustry. ">
-								<figcaption class="mask">
-									<h3>Wall street</h3>
-									<p>Lorem Ipsum is simply dummy text of the printing and typesetting ndustry. </p>
-								</figcaption>
-								<ul class="external">
-									<li><a class="fancybox" title="Wall street" href="img/slider/banner.jpg" data-fancybox-group="works" ><i class="fa fa-search"></i></a></li>
-									<li><a href=""><i class="fa fa-link"></i></a></li>
-								</ul>
-							</li>
-							
-							<li class="portfolio-item">
-								<img src="img/portfolio/item3.jpg" class="img-responsive" alt="Lorem Ipsum is simply dummy text of the printing and typesetting ndustry. ">
-								<figcaption class="mask">
-									<h3>Wall street</h3>
-									<p>Lorem Ipsum is simply dummy text of the printing and typesetting ndustry. </p>
-								</figcaption>
-								<ul class="external">
-									<li><a class="fancybox" title="Behind The world" data-fancybox-group="works" href="img/portfolio/item3.jpg"><i class="fa fa-search"></i></a></li>
-									<li><a href=""><i class="fa fa-link"></i></a></li>
-								</ul>
-							</li>
-							
-							<li class="portfolio-item">
-								<img src="img/portfolio/item4.jpg" class="img-responsive" alt="Lorem Ipsum is simply dummy text of the printing and typesetting ndustry.">
-								<figcaption class="mask">
-									<h3>Wall street</h3>
-									<p>Lorem Ipsum is simply dummy text of the printing and typesetting ndustry. </p>
-								</figcaption>
-								<ul class="external">
-									<li><a class="fancybox" title="Wall street 4" data-fancybox-group="works" href="img/portfolio/item4.jpg"><i class="fa fa-search"></i></a></li>
-									<li><a href=""><i class="fa fa-link"></i></a></li>
-								</ul>
-							</li>
-							
-							<li class="portfolio-item">
-								<img src="img/portfolio/item5.jpg" class="img-responsive" alt="Lorem Ipsum is simply dummy text of the printing and typesetting ndustry. ">
-								<figcaption class="mask">
-									<h3>Wall street</h3>
-									<p>Lorem Ipsum is simply dummy text of the printing and typesetting ndustry. </p>
-								</figcaption>
-								<ul class="external">
-									<li><a class="fancybox" title="Wall street 5" data-fancybox-group="works" href="img/portfolio/item5.jpg"><i class="fa fa-search"></i></a></li>
-									<li><a href=""><i class="fa fa-link"></i></a></li>
-								</ul>
-							</li>
-							
-							<li class="portfolio-item">
-								<img src="img/portfolio/item6.jpg" class="img-responsive" alt="Lorem Ipsum is simply dummy text of the printing and typesetting ndustry. ">
-								<figcaption class="mask">
-									<h3>Wall street</h3>
-									<p>Lorem Ipsum is simply dummy text of the printing and typesetting ndustry. </p>
-								</figcaption>
-								<ul class="external">
-									<li><a class="fancybox" title="Wall street 6" data-fancybox-group="works" href="img/portfolio/item6.jpg"><i class="fa fa-search"></i></a></li>
-									<li><a href=""><i class="fa fa-link"></i></a></li>
-								</ul>
-							</li>
+							<?php
+							for($i = 0; $i < 6; $i++)
+							{
+								?>
+								<li class="portfolio-item">
+									<img src="<?php echo "https://graph.facebook.com/".$arrPhoto["data"][$i]["id"]."/picture?width=290&height=381"; ?>" class="img-responsive" alt="">
+									<ul class="external">
+										<li><a class="fancybox" title="Araund The world" data-fancybox-group="works" href="img/portfolio/item.jpg"><i class="fa fa-search"></i></a></li>
+										<li><a href="https://facebook.com/<?php echo $arrPhoto["data"][$i]["id"] ?>"><i class="fa fa-link"></i></a></li>
+									</ul>
+								</li>
+								<?php
+							}
+							?>
 						</ul>
 						
 					</div>
@@ -371,31 +326,29 @@ include_once($_SERVER['DOCUMENT_ROOT']."/config.php");
 						<div class="row">
 						
 							<div class="sec-title text-center white wow animated fadeInDown">
-								<h2>What people say</h2>
+								<h2>Testimonianze</h2>
 							</div>
 							
 							<div id="testimonial" class=" wow animated fadeInUp">
+								<?php
+								$responseTestimonianze = $fb->get("/729783137104775/tagged", "466576463534668|bf7744806e9352368d3e9e965647d5ea");
+								$graphObjectTestimonianze = $responseTestimonianze->getGraphEdge();
+								$graphTestimonianzeJSON = $graphObjectTestimonianze->asJson();
+								
+								$arrTestimonianze = json_decode($graphTestimonianzeJSON, true);
+								for($i = 0; $i < 3; $i++)
+								{
+								?>
 								<div class="testimonial-item text-center">
-									<img src="img/member-1.jpg" alt="Our Clients">
+									<img src="https://graph.facebook.com/729783137104775/picture?access_token=466576463534668|bf7744806e9352368d3e9e965647d5ea&width=280&height=280" alt="Page Image">
 									<div class="clearfix">
-										<span>Katty Flower</span>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+										<span>&nbsp;</span>
+										<p><?php echo $arrTestimonianze[$i]["message"]; ?></p>
 									</div>
 								</div>
-								<div class="testimonial-item text-center">
-									<img src="img/member-1.jpg" alt="Our Clients">
-									<div class="clearfix">
-										<span>Katty Flower</span>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-									</div>
-								</div>
-								<div class="testimonial-item text-center">
-									<img src="img/member-1.jpg" alt="Our Clients">
-									<div class="clearfix">
-										<span>Katty Flower</span>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-									</div>
-								</div>
+								<?php
+								}
+								?>
 							</div>
 						
 						</div>
