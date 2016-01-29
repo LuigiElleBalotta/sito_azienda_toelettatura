@@ -128,9 +128,9 @@ include_once($_SERVER['DOCUMENT_ROOT']."/config.php");
 						<div class="bg-img bg-img-2"></div>
 						<div class="slide-caption">
                             <div class="caption-content">
-                                <h2>BLUE Onepage HTML5 Template</h2>
-                                <span>Clean and Professional one page Template</span>
-                                <a href="#" class="btn btn-blue btn-effect">Join US</a>
+                                <h2>Happy Dogs</h2>
+                                <span>Casalmaggiore - Sabrina Barbieri</span>
+                                <a href="https://www.facebook.com/Happy-Dogs-di-sabrina-barbieri-729783137104775/" class="btn btn-blue btn-effect">Facebook</a>
                             </div>
                         </div>
 						
@@ -141,9 +141,9 @@ include_once($_SERVER['DOCUMENT_ROOT']."/config.php");
 						<div class="bg-img bg-img-3"></div>
 						<div class="slide-caption">
                             <div class="caption-content">
-                                <h2>BLUE Onepage HTML5 Template</h2>
-                                <span>Clean and Professional one page Template</span>
-                                <a href="#" class="btn btn-blue btn-effect">Join US</a>
+                                <h2>Happy Dogs</h2>
+                                <span>Casalmaggiore - Sabrina Barbieri</span>
+                                <a href="https://www.facebook.com/Happy-Dogs-di-sabrina-barbieri-729783137104775/" class="btn btn-blue btn-effect">Facebook</a>
                             </div>
                         </div>
 
