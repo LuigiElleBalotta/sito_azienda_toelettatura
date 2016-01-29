@@ -489,7 +489,7 @@ include_once($_SERVER['DOCUMENT_ROOT']."/config.php");
 						
 						<div class="col-md-5 wow animated fadeInRight">
 							<address class="contact-details">
-								<h3>Contact Us</h3>						
+								<h3>Come contattarmi direttamente</h3>						
 								<p><i class="fa fa-pencil"></i>Happy Dogs<span>Casalmaggiore 26041</span> <span>VIA AZZIO PORZIO, 118 </span><span>Cremona, Italia</span></p><br>
 								<p><i class="fa fa-phone"></i>Cell: 3385822105 - Fisso: 0375705436 </p>
 								<p><i class="fa fa-envelope"></i>website@yourname.com</p>
