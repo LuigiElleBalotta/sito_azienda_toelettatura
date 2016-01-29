@@ -82,7 +82,60 @@ $(function() {
 
 
 $(document).ready(function(){
-
+    
+    $('a.fancybox').colorbox({photo:true});
+    
+    /*Contacts form*/
+    $("#submit").click(function(e)
+    {
+        e.preventDefault();
+        var nome = $("#name").val();
+        var email = $("#email").val();
+        var oggetto = $("#subject").val();
+        var testo = $("#message").val();
+        if (nome == "")
+        {
+            alert("non hai inserito il nome");
+            return false;
+        }
+        if (email == "")
+        {
+            alert("non hai inserito la mail");
+            return false;
+        }
+        if (oggetto == "")
+        {
+            alert("non hai inserito l'oggetto");
+            return false;
+        }
+        if (testo == "")
+        {
+            alert("non hai inserito il testo");
+            return false;
+        }
+        if (!isValidEmail(email))
+        {
+            alert("L'email non è valida. Controllala.");
+            return false;
+        }
+        
+        $.post("./functions/sendContactsMail.php", "from="+email+"&oggetto="+oggetto+"&testo="+testo+"&nome="+nome, function(data, status){
+            alert(data);
+            if (data == "Inviata")
+            {
+                $("#name").val("");
+                $("#email").val("");
+                $("#subject").val("");
+                $("#message").val("");
+            }
+        })
+    });
+    
+    function isValidEmail(emailAddress) {
+        var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+        return pattern.test(emailAddress);
+    };
+    
 	/* ========================================================================= */
 	/*	Menu item highlighting
 	/* ========================================================================= */
@@ -181,7 +234,7 @@ function init() {
     // Basic options for a simple Google Map
     // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
 
-	    var myLatLng = new google.maps.LatLng(22.402789, 91.822156);
+	    var myLatLng = new google.maps.LatLng(44.9838676,10.4155286);
 
 	    var mapOptions = {
 	        zoom: 15,
@@ -253,7 +306,7 @@ function init() {
 
     // Let's also add a marker while we're at it
     var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(22.402789, 91.822156),
+        position: new google.maps.LatLng(44.9838676,10.4155286),
         map: map,
 		icon: 'img/icons/map-marker.png',
     });

@@ -115,9 +115,9 @@ include_once($_SERVER['DOCUMENT_ROOT']."/config.php");
 
 						<div class="slide-caption">
                             <div class="caption-content">
-                                <h2 class="animated fadeInDown">BLUE Onepage HTML5 Template</h2>
-                                <span class="animated fadeInDown">Clean and Professional one page Template</span>
-                                <a href="#" class="btn btn-blue btn-effect">Join US</a>
+                                <h2 class="animated fadeInDown">Happy Dogs</h2>
+                                <span class="animated fadeInDown">Casalmaggiore - Sabrina Barbieri</span>
+                                <a href="https://www.facebook.com/Happy-Dogs-di-sabrina-barbieri-729783137104775/" class="btn btn-blue btn-effect">Facebook</a>
                             </div>
                         </div>
 						
@@ -197,6 +197,13 @@ include_once($_SERVER['DOCUMENT_ROOT']."/config.php");
 						<!-- Wrapper for slides -->
 						<div class="carousel-inner" role="listbox">
 							<?php
+							/* PHP SDK v5.0.0 */
+							/* make the API call */
+							$response = $fb->get("/729783137104775/posts", "466576463534668|bf7744806e9352368d3e9e965647d5ea");
+							$graphObject = $response->getGraphEdge();
+							/* handle the result */
+							$graphJSON = $graphObject->asJson();
+							$arr = json_decode($graphJSON, true);
 							for($i = 0; $i < 4; $i++)
 							{
 								if($i == 0)
@@ -299,13 +306,15 @@ include_once($_SERVER['DOCUMENT_ROOT']."/config.php");
 						</div>
 						<ul class="project-wrapper wow animated fadeInUp">
 							<?php
+							$photoJSON = file_get_contents("https://graph.facebook.com/729783137104775/photos?access_token=466576463534668|bf7744806e9352368d3e9e965647d5ea&type=uploaded");
+							$arrPhoto = json_decode($photoJSON, true);
 							for($i = 0; $i < 6; $i++)
 							{
 								?>
 								<li class="portfolio-item">
 									<img src="<?php echo "https://graph.facebook.com/".$arrPhoto["data"][$i]["id"]."/picture?width=290&height=381"; ?>" class="img-responsive" alt="">
 									<ul class="external">
-										<li><a class="fancybox" title="Araund The world" data-fancybox-group="works" href="img/portfolio/item.jpg"><i class="fa fa-search"></i></a></li>
+										<li><a class="fancybox" title="Immagine" rel="works" href="<?php echo "https://graph.facebook.com/".$arrPhoto["data"][$i]["id"]."/picture?type=normal"; ?>"><i class="fa fa-search"></i></a></li>
 										<li><a href="https://facebook.com/<?php echo $arrPhoto["data"][$i]["id"] ?>"><i class="fa fa-link"></i></a></li>
 									</ul>
 								</li>
@@ -433,12 +442,12 @@ include_once($_SERVER['DOCUMENT_ROOT']."/config.php");
 						<div class="row">
 						
 							<div class="sec-title text-center white wow animated fadeInDown">
-								<h2>FOLLOW US</h2>
-								<p>Beautifully simple follow buttons to help you get followers on</p>
+								<h2>Seguimi</h2>
+								<p>Potrai così sapere tutte le novità.</p>
 							</div>
 							
 							<ul class="social-button">
-								<li class="wow animated zoomIn"><a href="#"><i class="fa fa-thumbs-up fa-2x"></i></a></li>
+								<li class="wow animated zoomIn"><a href="https://www.facebook.com/Happy-Dogs-di-sabrina-barbieri-729783137104775/"><i class="fa fa-thumbs-up fa-2x"></i></a></li>
 								<!--<li class="wow animated zoomIn" data-wow-delay="0.3s"><a href="#"><i class="fa fa-twitter fa-2x"></i></a></li>
 								<li class="wow animated zoomIn" data-wow-delay="0.6s"><a href="#"><i class="fa fa-dribbble fa-2x"></i></a></li>		-->					
 							</ul>
@@ -455,34 +464,34 @@ include_once($_SERVER['DOCUMENT_ROOT']."/config.php");
 					<div class="row">
 						
 						<div class="sec-title text-center wow animated fadeInDown">
-							<h2>Contact</h2>
-							<p>Leave a Message</p>
+							<h2>Contattami</h2>
+							<p>Lascia un messaggio</p>
 						</div>
 						
 						
 						<div class="col-md-7 contact-form wow animated fadeInLeft">
 							<form action="#" method="post">
 								<div class="input-field">
-									<input type="text" name="name" class="form-control" placeholder="Your Name...">
+									<input type="text" name="name" id="name" class="form-control" placeholder="Il tuo nome...">
 								</div>
 								<div class="input-field">
-									<input type="email" name="email" class="form-control" placeholder="Your Email...">
+									<input type="email" name="email" id="email" class="form-control" placeholder="La tua email...">
 								</div>
 								<div class="input-field">
-									<input type="text" name="subject" class="form-control" placeholder="Subject...">
+									<input type="text" name="subject" id="subject" class="form-control" placeholder="Oggetto...">
 								</div>
 								<div class="input-field">
-									<textarea name="message" class="form-control" placeholder="Messages..."></textarea>
+									<textarea name="message" id="message" class="form-control" placeholder="Messaggio..."></textarea>
 								</div>
-						       	<button type="submit" id="submit" class="btn btn-blue btn-effect">Send</button>
+						       	<button type="submit" id="submit" class="btn btn-blue btn-effect">Invia</button>
 							</form>
 						</div>
 						
 						<div class="col-md-5 wow animated fadeInRight">
 							<address class="contact-details">
 								<h3>Contact Us</h3>						
-								<p><i class="fa fa-pencil"></i>Phoenix Inc.<span>PO Box 345678</span> <span>Little Lonsdale St, Melbourne </span><span>Australia</span></p><br>
-								<p><i class="fa fa-phone"></i>Phone: (415) 124-5678 </p>
+								<p><i class="fa fa-pencil"></i>Happy Dogs<span>Casalmaggiore 26041</span> <span>VIA AZZIO PORZIO, 118 </span><span>Cremona, Italia</span></p><br>
+								<p><i class="fa fa-phone"></i>Cell: 3385822105 - Fisso: 0375705436 </p>
 								<p><i class="fa fa-envelope"></i>website@yourname.com</p>
 							</address>
 						</div>
@@ -502,25 +511,9 @@ include_once($_SERVER['DOCUMENT_ROOT']."/config.php");
 			<div class="container">
 				<div class="row text-center">
 					<div class="footer-content">
-						<div class="wow animated fadeInDown">
-							<p>newsletter signup</p>
-							<p>Get Cool Stuff! We hate spam!</p>
-						</div>
-						<form action="#" method="post" class="subscribe-form wow animated fadeInUp">
-							<div class="input-field">
-								<input type="email" class="subscribe form-control" placeholder="Enter Your Email...">
-								<button type="submit" class="submit-icon">
-									<i class="fa fa-paper-plane fa-lg"></i>
-								</button>
-							</div>
-						</form>
 						<div class="footer-social">
 							<ul>
-								<li class="wow animated zoomIn"><a href="#"><i class="fa fa-thumbs-up fa-3x"></i></a></li>
-								<li class="wow animated zoomIn" data-wow-delay="0.3s"><a href="#"><i class="fa fa-twitter fa-3x"></i></a></li>
-								<li class="wow animated zoomIn" data-wow-delay="0.6s"><a href="#"><i class="fa fa-skype fa-3x"></i></a></li>
-								<li class="wow animated zoomIn" data-wow-delay="0.9s"><a href="#"><i class="fa fa-dribbble fa-3x"></i></a></li>
-								<li class="wow animated zoomIn" data-wow-delay="1.2s"><a href="#"><i class="fa fa-youtube fa-3x"></i></a></li>
+								<li class="wow animated zoomIn"><a href="https://www.facebook.com/Happy-Dogs-di-sabrina-barbieri-729783137104775/"><i class="fa fa-thumbs-up fa-3x"></i></a></li>
 							</ul>
 						</div>
 						
@@ -553,5 +546,9 @@ include_once($_SERVER['DOCUMENT_ROOT']."/config.php");
         <script src="js/wow.min.js"></script>
 		<!-- Custom Functions -->
         <script src="js/main.js"></script>
+		<!-- Colorbox -->
+		<link rel="stylesheet" href="js/colorbox/colorbox_css.css" />
+		<script src="js/colorbox/jquery.colorbox.js"></script>
+		
     </body>
 </html>
